@@ -26,4 +26,9 @@ public class ProductController {
     public ResponseEntity<List<Product>> fetchProducts(){
         return new ResponseEntity<List<Product>>(productService.fetchAll(), HttpStatus.OK);
     }
+
+    @GetMapping("get-count/{productName}")
+    public ResponseEntity<Integer> getProductCount(@PathVariable String productName){
+        return new ResponseEntity<Integer>(productService.getCount(productName), HttpStatus.OK);
+    }
 }

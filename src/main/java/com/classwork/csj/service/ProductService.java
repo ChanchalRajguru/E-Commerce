@@ -3,6 +3,7 @@ package com.classwork.csj.service;
 import com.classwork.csj.entity.Product;
 import com.classwork.csj.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,12 @@ public class ProductService {
     }
 
     public List<Product> fetchAll(){
-        return productRepository.findAll();
+        return productRepository.fetchAll();
+    }
+
+    public Integer getCount(String productName){
+        Integer count = productRepository.fetchProductCountByName(productName);
+        count = count == null? 0: count;
+        return count;
     }
 }
