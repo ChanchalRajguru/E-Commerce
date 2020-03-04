@@ -17,5 +17,6 @@ public class userType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    //the usertype
     private String name;
 }
