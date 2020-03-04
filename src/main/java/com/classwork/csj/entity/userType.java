@@ -15,8 +15,7 @@ import javax.persistence.Id;
 public class userType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    //the usertype
     private String name;
 }
