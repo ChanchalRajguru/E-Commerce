@@ -20,7 +20,7 @@ public class Review {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="productId")
     private Product product;
 
 

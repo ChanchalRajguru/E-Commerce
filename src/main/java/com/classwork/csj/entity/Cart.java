@@ -20,7 +20,7 @@ public class Cart {
     private boolean expired;
 
     @OneToMany
-    @JoinColumn(name = "create_date")
+    @JoinColumn(name = "productId")
     private Product product;
 
     @OneToOne
