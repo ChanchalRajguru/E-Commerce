@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,7 +22,7 @@ public class Cart {
 
     @OneToMany
     @JoinColumn(name = "productId")
-    private Product product;
+    private List<Product> product;
 
     @OneToOne
     @JoinColumn(name = "userId")
