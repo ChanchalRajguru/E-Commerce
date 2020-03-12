@@ -21,10 +21,9 @@ public class Cart {
     private boolean expired;
 
     @OneToMany
-    @JoinColumn(name = "productId")
     private List<Product> product;
 
     @OneToOne
-    @JoinColumn(name = "userId")
+    //@JoinColumn(name = "userId")
     private User user;
 }

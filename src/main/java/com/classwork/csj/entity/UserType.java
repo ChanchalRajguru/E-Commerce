@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @Getter
 @Setter
 
-public class userType {
+public class UserType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

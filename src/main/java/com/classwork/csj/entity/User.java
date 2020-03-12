@@ -37,5 +37,5 @@ public class User {
     private String gender;
 
     @OneToOne
-    private userType userType;
+    private UserType userType;
 }
