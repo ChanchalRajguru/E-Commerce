@@ -26,7 +26,7 @@ public class CartService {
     }
 
     public Cart addCartItem(Product product, int quantity, int userId) {
-        Optional<Cart> cart = cartRepository.findByUserId(userId);
+        Optional<Cart> cart = cartRepository.findByUserId(Long.valueOf(userId));
         CartItem newItem = new CartItem();
         newItem.setQuantity(quantity);
         newItem.setProduct(product);
@@ -38,6 +38,28 @@ public class CartService {
             return cart.get();
         } else {
             return createCart(newItem);
+        }
+    }
+
+    public Cart getCart(int userId) {
+        Optional<Cart> cart = cartRepository.findByUserId(Long.valueOf(userId));
+
+        return cart.get();
+    }
+
+    public void deleteCartItem(int itemId, int userId) {
+        Optional<CartItem> item = cartItemRepository.findById(Long.valueOf(itemId));
+
+        if (item.get().getCart().getUser().getUserId() == userId) {
+            cartItemRepository.deleteById(Long.valueOf(itemId));
+        }
+    }
+
+    public void emptyCart(int cartId, int userId) {
+        Optional<Cart> cart = cartRepository.findById(Long.valueOf(cartId));
+
+        if (cart.get().getUser().getUserId() == userId) {
+            cartRepository.deleteByUserId(Long.valueOf(userId));
         }
     }
 }
