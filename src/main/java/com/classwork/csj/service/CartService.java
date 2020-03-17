@@ -41,7 +41,7 @@ public class CartService {
         }
     }
 
-    public void updateCartItem(CartItem newCartItem, int userId) {
+    public void updateCartItem(CartItem newCartItem) {
         Optional<CartItem> cartItem = cartItemRepository.findById(Long.valueOf(newCartItem.getId()));
 
         if (cartItem.get().getId() != null) {

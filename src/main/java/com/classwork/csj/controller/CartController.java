@@ -23,30 +23,30 @@ public class CartController {
     @Autowired
     CartService cartService;
 
-    @GetMapping("{userId}/cart")
-    public ResponseEntity<Cart> getCart(@PathVariable int userId) {
+    @GetMapping("cart")
+    public ResponseEntity<Cart> getCart(@RequestHeader("user-id") int userId) {
         return new ResponseEntity<Cart>(cartService.getCart(userId), HttpStatus.OK);
     }
 
-    @PostMapping("{userId}/cart/{quantity}")
-    public ResponseEntity addToCart(@Valid @RequestBody Product product, @PathVariable int quantity, @PathVariable int userId) {
+    @PostMapping("cart/{quantity}")
+    public ResponseEntity addToCart(@Valid @RequestBody Product product, @PathVariable int quantity, @RequestHeader("user-id") int userId) {
         Cart cart = cartService.addCartItem(product, quantity, userId);
 
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    @PutMapping("{userId}/cart")
-    public ResponseEntity updateCart(@Valid @RequestBody CartItem cartItem, @PathVariable int userId) {
+    @PutMapping("cart")
+    public ResponseEntity updateCart(@Valid @RequestBody CartItem cartItem) {
         try {
-            cartService.updateCartItem(cartItem, userId);
+            cartService.updateCartItem(cartItem);
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (EmptyResultDataAccessException e) {
             throw new ItemNotFoundException("Item not found in cart");
         }
     }
 
-    @DeleteMapping("{userId}/cart/{itemId}")
-    public void removeCartItem(@PathVariable int itemId, @PathVariable int userId) {
+    @DeleteMapping("cart/{itemId}")
+    public void removeCartItem(@PathVariable int itemId, @RequestHeader("user-id") int userId) {
         try {
             cartService.deleteCartItem(itemId, userId);
         } catch (EmptyResultDataAccessException e) {
@@ -54,8 +54,8 @@ public class CartController {
         }
     }
 
-    @DeleteMapping("{userId}/cart")
-    public void emptyCart(@PathVariable int userId) {
+    @DeleteMapping("cart")
+    public void emptyCart(@RequestHeader("user-id") int userId) {
         try {
             cartService.emptyCart(userId);
         } catch (EmptyResultDataAccessException e) {

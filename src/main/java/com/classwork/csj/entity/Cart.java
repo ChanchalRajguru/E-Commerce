@@ -1,5 +1,6 @@
 package com.classwork.csj.entity;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,11 +17,14 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ApiModelProperty(notes = "expiry status of cart")
     private boolean expired;
 
+    @ApiModelProperty(notes = "owner of cart")
     @OneToOne
     private User user;
 
+    @ApiModelProperty(notes = "list of item(s) added to cart")
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CartItem> items = new ArrayList<>();
 

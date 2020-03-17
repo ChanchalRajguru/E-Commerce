@@ -1,9 +1,11 @@
 package com.classwork.csj.entity;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.List;
 
 @Getter
@@ -15,6 +17,8 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Min(value = 1, message = "Quantity should be a minimum of one.")
+    @ApiModelProperty(notes = "Quantity of item in cart")
     @Column(nullable = false)
     private int quantity;
 
