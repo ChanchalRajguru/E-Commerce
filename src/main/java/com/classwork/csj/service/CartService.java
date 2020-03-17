@@ -60,16 +60,20 @@ public class CartService {
     public void deleteCartItem(int itemId, int userId) {
         Optional<CartItem> item = cartItemRepository.findById(Long.valueOf(itemId));
 
-        if (item.get().getCart().getUser().getUserId() == userId) {
+        if (item.get().getCart().getUser().getId() == userId) {
             cartItemRepository.deleteById(Long.valueOf(itemId));
+        } else {
+            throw new Error();
         }
     }
 
-    public void emptyCart(int cartId, int userId) {
-        Optional<Cart> cart = cartRepository.findById(Long.valueOf(cartId));
+    public void emptyCart(int userId) {
+        Optional<Cart> cart = cartRepository.findByUserId(Long.valueOf(userId));
 
-        if (cart.get().getUser().getUserId() == userId) {
-            cartRepository.deleteByUserId(Long.valueOf(userId));
+        if (cart.get().getId() != null) {
+            cartRepository.deleteById(Long.valueOf(cart.get().getId()));
+        } else {
+            throw new Error();
         }
     }
 }

@@ -54,10 +54,10 @@ public class CartController {
         }
     }
 
-    @DeleteMapping("{userId}/cart/{cartId}")
-    public void emptyCart(@PathVariable int cartId, @PathVariable int userId) {
+    @DeleteMapping("{userId}/cart")
+    public void emptyCart(@PathVariable int userId) {
         try {
-            cartService.emptyCart(cartId, userId);
+            cartService.emptyCart(userId);
         } catch (EmptyResultDataAccessException e) {
             throw new ItemNotFoundException("Unable to empty cart");
         }
