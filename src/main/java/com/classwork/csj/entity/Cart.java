@@ -26,12 +26,12 @@ public class Cart {
 
     @ApiModelProperty(notes = "list of item(s) added to cart")
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CartItem> items = new ArrayList<>();
+    private List<CartItem> cartItems = new ArrayList<>();
 
     @Transient
     public Double getTotalCartPrice() {
         double sum = 0D;
-        List<CartItem> cartItems = getItems();
+        List<CartItem> cartItems = getCartItems();
 
         for (CartItem ci : cartItems) {
             sum += ci.getTotalPrice();
@@ -41,12 +41,12 @@ public class Cart {
     }
 
     public void addItem(CartItem item) {
-        items.add(item);
+        cartItems.add(item);
         item.setCart(this);
     }
 
     public void removeItem(CartItem item) {
-        items.remove(item);
+        cartItems.remove(item);
         item.setCart(null);
     }
 }
