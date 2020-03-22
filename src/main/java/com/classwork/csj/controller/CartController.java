@@ -32,8 +32,8 @@ public class CartController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    @PutMapping("update/{itemId}")
-    public ResponseEntity updateCartItem(@Valid @RequestBody int quantity, @PathVariable int itemId, @RequestHeader("user-id") int userId) {
+    @PutMapping("update/{itemId}/{quantity}")
+    public ResponseEntity updateCartItem(@PathVariable int quantity, @PathVariable int itemId, @RequestHeader("user-id") int userId) {
         try {
             cartService.updateCartItem(quantity, itemId, userId);
             return ResponseEntity.status(HttpStatus.OK).build();
