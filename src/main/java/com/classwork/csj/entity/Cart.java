@@ -1,5 +1,6 @@
 package com.classwork.csj.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Cart {
 
     @Id
