@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long id;
 
     @Size(min = 2)
     @ApiModelProperty(notes = "First name should be at least two characters.")

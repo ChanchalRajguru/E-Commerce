@@ -1,9 +1,11 @@
 package com.classwork.csj.entity;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -15,15 +17,36 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private double amount;
-    private String name;
-    private int quantity;
+    @ApiModelProperty(notes = "expiry status of cart")
     private boolean expired;
 
-    @OneToMany
-    private List<Product> product;
-
+    @ApiModelProperty(notes = "owner of cart")
     @OneToOne
-    //@JoinColumn(name = "userId")
     private User user;
+
+    @ApiModelProperty(notes = "list of item(s) added to cart")
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartItem> cartItems = new ArrayList<>();
+
+    @Transient
+    public Double getTotalCartPrice() {
+        double sum = 0D;
+        List<CartItem> cartItems = getCartItems();
+
+        for (CartItem ci : cartItems) {
+            sum += ci.getTotalPrice();
+        }
+
+        return sum;
+    }
+
+    public void addItem(CartItem item) {
+        cartItems.add(item);
+        item.setCart(this);
+    }
+
+    public void removeItem(CartItem item) {
+        cartItems.remove(item);
+        item.setCart(null);
+    }
 }
