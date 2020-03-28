@@ -23,7 +23,7 @@ public class AppBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     private void initialize() {
         long count = productRepository.count();
         if (count <20 ){
-            for(int i=0; i<20; i++){
+            for(int i=0; i<55; i++){
                 Product product = new Product();
                 String name = generateName();
                 product.setName(name);
@@ -40,7 +40,7 @@ public class AppBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     }
 
     private String generateName(){
-        return RandomStringUtils.random(4);
+        return RandomStringUtils.randomAlphabetic(4);
     }
 
 

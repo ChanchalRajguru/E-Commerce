@@ -27,4 +27,9 @@ public class ProductService {
         count = count == null? 0: count;
         return count;
     }
+
+    public boolean deleteAll() {
+        productRepository.deleteAll();
+        return true;
+    }
 }
