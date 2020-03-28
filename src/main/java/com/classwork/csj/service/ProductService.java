@@ -2,6 +2,7 @@ package com.classwork.csj.service;
 
 import com.classwork.csj.entity.Product;
 import com.classwork.csj.repository.ProductRepository;
+import com.classwork.csj.util.ProductUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,9 @@ public class ProductService {
 
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    ProductUtil productUtil;
 
     public Product create(Product product){
        return productRepository.save(product);
@@ -31,5 +35,9 @@ public class ProductService {
     public boolean deleteAll() {
         productRepository.deleteAll();
         return true;
+    }
+
+    public void generateSampleProducts(int number) {
+        productUtil.generateSampleProducts(number);
     }
 }

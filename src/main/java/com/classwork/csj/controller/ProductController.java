@@ -38,4 +38,10 @@ public class ProductController {
         return new ResponseEntity<>(productService.deleteAll(), HttpStatus.ACCEPTED);
     }
 
+    @GetMapping("/generate/{number}")
+    public ResponseEntity<List<Product>> generateProducts(@PathVariable int number){
+        productService.generateSampleProducts(number);
+        return new ResponseEntity<List<Product>>(productService.fetchAll(), HttpStatus.OK);
+    }
+
 }
