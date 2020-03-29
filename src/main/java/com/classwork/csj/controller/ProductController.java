@@ -18,18 +18,30 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @PostMapping("create")
+    @PostMapping("/create")
     public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product){
         return new ResponseEntity<>(productService.create(product), HttpStatus.CREATED);
     }
 
-    @GetMapping("get-all")
+    @GetMapping("/get-all")
     public ResponseEntity<List<Product>> fetchProducts(){
         return new ResponseEntity<List<Product>>(productService.fetchAll(), HttpStatus.OK);
     }
 
-    @GetMapping("get-count/{productName}")
+    @GetMapping("/get-count/{productName}")
     public ResponseEntity<Integer> getProductCount(@PathVariable String productName){
         return new ResponseEntity<Integer>(productService.getCount(productName), HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete-all")
+    public ResponseEntity<Boolean> deleteAll(){
+        return new ResponseEntity<>(productService.deleteAll(), HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("/generate/{number}")
+    public ResponseEntity<List<Product>> generateProducts(@PathVariable int number){
+        productService.generateSampleProducts(number);
+        return new ResponseEntity<List<Product>>(productService.fetchAll(), HttpStatus.OK);
+    }
+
 }
