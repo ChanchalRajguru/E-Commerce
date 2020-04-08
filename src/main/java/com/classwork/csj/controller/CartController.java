@@ -2,7 +2,7 @@ package com.classwork.csj.controller;
 
 import com.classwork.csj.entity.Cart;
 import com.classwork.csj.entity.Product;
-import com.classwork.csj.exceptions.ItemNotFoundException;
+import com.classwork.csj.exception.ItemNotFoundException;
 import com.classwork.csj.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;

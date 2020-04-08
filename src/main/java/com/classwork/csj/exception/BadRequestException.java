@@ -1,4 +1,4 @@
-package com.classwork.csj.exceptions;
+package com.classwork.csj.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

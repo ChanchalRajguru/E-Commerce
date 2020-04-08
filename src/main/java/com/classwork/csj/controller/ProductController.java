@@ -2,8 +2,8 @@ package com.classwork.csj.controller;
 
 
 import com.classwork.csj.entity.Product;
-import com.classwork.csj.exceptions.BadRequestException;
-import com.classwork.csj.exceptions.ItemNotFoundException;
+import com.classwork.csj.exception.BadRequestException;
+import com.classwork.csj.exception.ItemNotFoundException;
 import com.classwork.csj.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
