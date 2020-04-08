@@ -17,6 +17,10 @@ public class AppBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         initialize();
     }
 
+    /**
+     * Populate database with sample products on start up
+     * Another approach could have been to use the data.sql file in the resource folder of the project
+     */
     private void initialize() {
         productUtil.generateSampleProducts(55);
     }

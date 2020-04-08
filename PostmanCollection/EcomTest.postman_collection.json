@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "db8a5786-c083-44a8-b949-b97eb68a6959",
+		"_postman_id": "28de72a6-2091-42b9-96ba-e34c37b66e38",
 		"name": "EcomTest",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -25,31 +25,30 @@
 			"response": []
 		},
 		{
-			"name": "GET All Products",
+			"name": "Swagger",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/product/get-all",
+					"raw": "localhost:8080/swagger-ui.html",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"product",
-						"get-all"
+						"swagger-ui.html"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "GET Product Count",
+			"name": "GET Generate Products",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/product/get-count/JqvH",
+					"raw": "http://localhost:8080/product/generate/77",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -57,7 +56,127 @@
 					"port": "8080",
 					"path": [
 						"product",
-						"get-count",
+						"generate",
+						"77"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/product/all",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Product With Location",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/product/all",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Products Paginated",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/product/all/paginate?page=0&size=5&sort=name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"all",
+						"paginate"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "5"
+						},
+						{
+							"key": "sort",
+							"value": "name"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Search Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/product/?name=shirt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "shirt"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Count of Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/product/count/JqvH",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"count",
 						"JqvH"
 					]
 				}
@@ -65,7 +184,27 @@
 			"response": []
 		},
 		{
-			"name": "POST Create Product",
+			"name": "GET Count of All Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/product/count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Create Product With Location Returned",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -90,7 +229,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"TShirt\",\r\n  \"amount\": 100.0,\r\n  \"quantity\": 11,\r\n  \"minimumQuantity\": 7,\r\n  \"description\": \"XaeB\"\r\n}",
+					"raw": "{\r\n  \"name\": \"Polo Shirt\",\r\n  \"amount\": 100.0,\r\n  \"quantity\": 15,\r\n  \"minimumQuantity\": 7,\r\n  \"description\": \"Polo shirt\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -98,7 +237,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/product/create",
+					"raw": "http://localhost:8080/product/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -106,19 +245,165 @@
 					"port": "8080",
 					"path": [
 						"product",
-						"create"
+						""
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "DELETE Delete All Products",
+			"name": "POST Create Product Test Validation",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f937a04f-f99e-4e76-aaf3-cbad1cc0c774",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"A\",\r\n  \"amount\": 1000,\r\n  \"quantity\": 0,\r\n  \"minimumQuantity\": 5,\r\n  \"description\": \"Air Conditioner\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/product/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE Product",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f937a04f-f99e-4e76-aaf3-cbad1cc0c774",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\":77,\r\n  \"name\": \"TShirts\",\r\n  \"amount\": 100.0,\r\n  \"quantity\": 11,\r\n  \"minimumQuantity\": 7,\r\n  \"description\": \"XaeB\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/product/update/77",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"update",
+						"77"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE Product Exception Test",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f937a04f-f99e-4e76-aaf3-cbad1cc0c774",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\":77,\r\n  \"name\": \"TShirts\",\r\n  \"amount\": 100.0,\r\n  \"quantity\": 11,\r\n  \"minimumQuantity\": 7,\r\n  \"description\": \"XaeB\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/product/update/78",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"update",
+						"78"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE All Products",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/product/delete-all",
+					"raw": "http://localhost:8080/product/clear",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -126,19 +411,19 @@
 					"port": "8080",
 					"path": [
 						"product",
-						"delete-all"
+						"clear"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "GET Generate Products",
+			"name": "DELETE Product",
 			"request": {
-				"method": "GET",
+				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/product/generate/77",
+					"raw": "http://localhost:8080/product/clear/70",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -146,8 +431,8 @@
 					"port": "8080",
 					"path": [
 						"product",
-						"generate",
-						"77"
+						"clear",
+						"70"
 					]
 				}
 			},
